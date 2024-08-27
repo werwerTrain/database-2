@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db-deployment
+  name: hotel-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: db
+      app: hotel
   template:
     metadata:
       labels:
-        app: db
+        app: hotel
     spec:
       containers:
-      - name: db
-        image: luluplum/db:latest
+      - name: hotel
+        image: qiuer0121/hotel:latest
         ports:
         - containerPort: 3306
