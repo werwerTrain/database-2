@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'luluplum', url: 'https://github.com/werwerTrain/database.git'
+                git branch: 'luluplum', url: 'https://github.com/werwerTrain/database-2.git'
             }
         }
         stage('Build DB') {
