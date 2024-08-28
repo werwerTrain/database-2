@@ -44,10 +44,10 @@ pipeline {
                     */
                     
                     // 构建前端 Docker 镜像
-                    sh 'docker build -t ${DB_IMAGE1} ./db'
-                    sh 'docker build -t ${DB_IMAGE2} ./db'
-                    sh 'docker build -t ${DB_IMAGE3} ./db'
-                    sh 'docker build -t ${DB_IMAGE4} ./db'
+                    sh 'docker build -t ${DB_IMAGE1} ./Food'
+                    sh 'docker build -t ${DB_IMAGE2} ./Hotel'
+                    sh 'docker build -t ${DB_IMAGE3} ./Train'
+                    sh 'docker build -t ${DB_IMAGE4} ./User'
                    
                 }
             }
