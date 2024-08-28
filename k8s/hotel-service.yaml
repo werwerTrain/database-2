@@ -7,6 +7,6 @@ spec:
     app: hotel
   ports:
     - protocol: TCP
-      port: 3306
+      port: 3308
       targetPort: 3306
   type: ClusterIP
