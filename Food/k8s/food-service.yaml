@@ -7,7 +7,7 @@ spec:
     app: food
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
-      nodePort: 30003
+      port: 3304
+      targetPort: 3304
+      nodePort: 30024
   type: NodePort

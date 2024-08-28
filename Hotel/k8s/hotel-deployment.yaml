@@ -16,4 +16,4 @@ spec:
       - name: hotel
         image: qiuer0121/hotel:latest
         ports:
-        - containerPort: 3306
+        - containerPort: 3301

@@ -7,7 +7,7 @@ spec:
     app: hotel
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
-      nodePort: 30003
+      port: 3301
+      targetPort: 3301
+      nodePort: 30021
   type: NodePort

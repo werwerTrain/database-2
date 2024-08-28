@@ -16,4 +16,4 @@ spec:
       - name: train
         image: qiuer0121/train:latest
         ports:
-        - containerPort: 3306
+        - containerPort: 3303

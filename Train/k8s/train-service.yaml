@@ -7,7 +7,7 @@ spec:
     app: train
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
-      nodePort: 30003
+      port: 3303
+      targetPort: 3303
+      nodePort: 30023
   type: NodePort

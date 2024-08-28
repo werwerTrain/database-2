@@ -16,4 +16,4 @@ spec:
       - name: food
         image: qiuer0121/food:latest
         ports:
-        - containerPort: 3306
+        - containerPort: 3304
