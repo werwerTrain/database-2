@@ -90,10 +90,10 @@ pipeline {
                 script {
                     
                     // 应用 Kubernetes 配置
-                    sh 'kubectl apply -f ./k8s/food-deployment.yaml'
-                    sh 'kubectl apply -f ./k8s/hotel-deployment.yaml'
-                    sh 'kubectl apply -f ./k8s/train-deployment.yaml'
-                    sh 'kubectl apply -f ./k8s/user-deployment.yaml'
+                    sh 'kubectl apply -f k8s/food-deployment.yaml'
+                    sh 'kubectl apply -f k8s/hotel-deployment.yaml'
+                    sh 'kubectl apply -f k8s/train-deployment.yaml'
+                    sh 'kubectl apply -f k8s/user-deployment.yaml'
                 }
             }
         }
@@ -102,10 +102,10 @@ pipeline {
             steps {
                 script {
                     // 应用 Kubernetes 配置
-                    sh 'kubectl apply -f ./k8s/food-service.yaml'
-                    sh 'kubectl apply -f ./k8s/hotel-service.yaml'
-                    sh 'kubectl apply -f ./k8s/train-service.yaml'
-                    sh 'kubectl apply -f ./k8s/user-service.yaml'
+                    sh 'kubectl apply -f k8s/food-service.yaml'
+                    sh 'kubectl apply -f k8s/hotel-service.yaml'
+                    sh 'kubectl apply -f k8s/train-service.yaml'
+                    sh 'kubectl apply -f k8s/user-service.yaml'
                 }
             }
         }
