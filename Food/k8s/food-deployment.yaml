@@ -15,5 +15,10 @@ spec:
       containers:
       - name: food
         image: qiuer0121/food:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "werwerTrip1234"
+          - name: MYSQL_DATABASE
+            value: "werwerTrip"
         ports:
         - containerPort: 3306
