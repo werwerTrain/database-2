@@ -10,10 +10,10 @@ pipeline {
         stage('删除旧容器'){
             steps{
             //删除已有deployment和serve
-            bat'''
-                kubectl delete -f User/k8s/user-deployment.yaml || true
-                kubectl delete -f User/k8s/user-service.yaml || true
-            '''
+            // bat'''
+            //     kubectl delete -f User/k8s/user-deployment.yaml || true
+            //     kubectl delete -f User/k8s/user-service.yaml || true
+            // '''
             // 查找并停止旧的容器
                 powershell '''
                 $containers = docker ps -q --filter "ancestor=bxr0820/user:latest"
