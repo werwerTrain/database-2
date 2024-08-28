@@ -88,10 +88,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh 'kubectl delete -f k8s/food-deployment.yaml --ignore-not-found'
-                    sh 'kubectl delete -f k8s/hotel-deployment.yaml --ignore-not-found'
-                    sh 'kubectl delete -f k8s/train-deployment.yaml --ignore-not-found'
-                    sh 'kubectl delete -f k8s/user-deployment.yaml --ignore-not-found'
+                    
                     // 应用 Kubernetes 配置
                     sh 'kubectl apply -f k8s/food-deployment.yaml'
                     sh 'kubectl apply -f k8s/hotel-deployment.yaml'
