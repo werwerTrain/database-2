@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: train-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: train
+  template:
+    metadata:
+      labels:
+        app: train
+    spec:
+      containers:
+      - name: train
+        image: luluplum/train:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "werwerTrip1234"
+          - name: MYSQL_DATABASE
+            value: "Train"
+        ports:
+        - containerPort: 3306
