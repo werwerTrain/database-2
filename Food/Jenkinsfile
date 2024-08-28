@@ -9,12 +9,10 @@ pipeline {
         }
         stage('删除旧容器'){
             steps{
-            //删除已有deployment和serve
-            // bat'''
-            //     kubectl delete -f Food/k8s/food-deployment.yaml
-            //     kubectl delete -f Food/k8s/food-service.yaml
-            // '''
-            // 查找并停止旧的容器
+            bat'''
+                kubectl delete -f Food/k8s/food-deployment.yaml || true
+                kubectl delete -f Food/k8s/food-service.yaml || true
+            '''
                 powershell '''
                 $containers = docker ps -q --filter "ancestor=qiuer0121/food:latest"
                 foreach ($container in $containers) {
