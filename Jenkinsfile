@@ -21,10 +21,31 @@ pipeline {
         stage('Build DB') {
             steps {
                 script {
-                    /*
+                    
                     // 查找并停止旧的容器
                     sh '''
-                    CONTAINERS=$(docker ps -q --filter "ancestor=${DB_IMAGE}")
+                    CONTAINERS=$(docker ps -q --filter "ancestor=${DB_IMAGE1}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker stop $CONTAINERS
+                    fi
+                    '''
+                    // 查找并停止旧的容器
+                    sh '''
+                    CONTAINERS=$(docker ps -q --filter "ancestor=${DB_IMAGE2}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker stop $CONTAINERS
+                    fi
+                    '''
+                    // 查找并停止旧的容器
+                    sh '''
+                    CONTAINERS=$(docker ps -q --filter "ancestor=${DB_IMAGE3}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker stop $CONTAINERS
+                    fi
+                    '''
+                    // 查找并停止旧的容器
+                    sh '''
+                    CONTAINERS=$(docker ps -q --filter "ancestor=${DB_IMAGE4}")
                     if [ -n "$CONTAINERS" ]; then
                         docker stop $CONTAINERS
                     fi
@@ -32,16 +53,49 @@ pipeline {
             
                     // 删除停止的容器
                     sh '''
-                    CONTAINERS=$(docker ps -a -q --filter "ancestor=${DB_IMAGE}")
+                    CONTAINERS=$(docker ps -a -q --filter "ancestor=${DB_IMAGE1}")
                     if [ -n "$CONTAINERS" ]; then
                         docker rm $CONTAINERS
                     fi
                     '''
                     
                     sh '''
-                    docker rmi -f ${DB_IMAGE} || true
+                    docker rmi -f ${DB_IMAGE1} || true
                     '''
-                    */
+                    // 删除停止的容器
+                    sh '''
+                    CONTAINERS=$(docker ps -a -q --filter "ancestor=${DB_IMAGE2}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker rm $CONTAINERS
+                    fi
+                    '''
+                    
+                    sh '''
+                    docker rmi -f ${DB_IMAGE2} || true
+                    '''
+                    // 删除停止的容器
+                    sh '''
+                    CONTAINERS=$(docker ps -a -q --filter "ancestor=${DB_IMAGE3}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker rm $CONTAINERS
+                    fi
+                    '''
+                    
+                    sh '''
+                    docker rmi -f ${DB_IMAGE3} || true
+                    '''
+                    // 删除停止的容器
+                    sh '''
+                    CONTAINERS=$(docker ps -a -q --filter "ancestor=${DB_IMAGE4}")
+                    if [ -n "$CONTAINERS" ]; then
+                        docker rm $CONTAINERS
+                    fi
+                    '''
+                    
+                    sh '''
+                    docker rmi -f ${DB_IMAGE4} || true
+                    '''
+                
                     
                     // 构建前端 Docker 镜像
                     sh 'docker build -t ${DB_IMAGE1} ./Food'
@@ -88,6 +142,10 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
+                    sh 'kubectl delete -f k8s/food-deployment.yaml'
+                    sh 'kubectl delete -f k8s/hotel-deployment.yaml'
+                    sh 'kubectl delete -f k8s/train-deployment.yaml'
+                    sh 'kubectl delete -f k8s/user-deployment.yaml'
                     
                     // 应用 Kubernetes 配置
                     sh 'kubectl apply -f k8s/food-deployment.yaml'
