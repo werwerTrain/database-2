@@ -7,7 +7,7 @@ spec:
     app: user
   ports:
     - protocol: TCP
-      port: 3306
-      targetPort: 3306
-      nodePort: 30003
+      port: 3305
+      targetPort: 3305
+      nodePort: 30025
   type: NodePort

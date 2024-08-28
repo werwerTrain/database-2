@@ -16,4 +16,4 @@ spec:
       - name: user
         image: qiuer0121/user:latest
         ports:
-        - containerPort: 3306
+        - containerPort: 3305
