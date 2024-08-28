@@ -19,6 +19,6 @@ spec:
           - name: MYSQL_ROOT_PASSWORD
             value: "werwerTrip1234"
           - name: MYSQL_DATABASE
-            value: "werwerTrip"
+            value: "Hotel"
         ports:
         - containerPort: 3301
