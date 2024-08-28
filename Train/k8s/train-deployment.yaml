@@ -21,4 +21,4 @@ spec:
           - name: MYSQL_DATABASE
             value: "Train"
         ports:
-        - containerPort: 3303
+        - containerPort: 3306

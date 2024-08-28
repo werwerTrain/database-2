@@ -21,4 +21,4 @@ spec:
           - name: MYSQL_DATABASE
             value: "Hotel"
         ports:
-        - containerPort: 3301
+        - containerPort: 3306

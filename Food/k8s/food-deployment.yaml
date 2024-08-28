@@ -21,4 +21,4 @@ spec:
           - name: MYSQL_DATABASE
             value: "Food"
         ports:
-        - containerPort: 3304
+        - containerPort: 3306
