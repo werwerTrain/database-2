@@ -16,24 +16,24 @@ pipeline {
             '''
             // 查找并停止旧的容器
                 powershell '''
-                $containers = docker ps -q --filter "ancestor=qiuer0121/user:latest"
+                $containers = docker ps -q --filter "ancestor=bxr0820/user:latest"
                 foreach ($container in $containers) {
                     Write-Output "Stopping container $container"
                     docker stop $container
                 }
 
-                $allContainers = docker ps -a -q --filter "ancestor=qiuer0121/user:latest"
+                $allContainers = docker ps -a -q --filter "ancestor=bxr0820/user:latest"
                 foreach ($container in $allContainers) {
                     Write-Output "Removing container $container"
                     docker rm $container
                 }
                 '''
-                bat 'docker rmi -f qiuer0121/user:latest || true'
+                bat 'docker rmi -f bxr0820/user:latest || true'
             }
         }
         stage('构建新容器'){
             steps{
-                bat 'docker build -t qiuer0121/user ./user'
+                bat 'docker build -t bxr0820/user ./user'
                 echo '构建成功'
             }
         }
@@ -42,8 +42,8 @@ pipeline {
             steps {
                 script {
                         bat '''
-                        echo 20050121Rabbit| docker login -u qiuer0121 --password-stdin
-                        docker push qiuer0121/user:latest
+                        echo buxinran123| docker login -u bxr0820 --password-stdin
+                        docker push bxr0820/user:latest
                         '''
                 }
             }

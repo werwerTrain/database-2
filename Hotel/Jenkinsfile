@@ -3,37 +3,37 @@ pipeline {
     stages {
         stage('拉取数据库') {
             steps {
-                git branch: 'sxq', url: 'https://github.com/werwerTrain/database-2.git'
+                git branch: 'bxr', url: 'https://github.com/werwerTrain/database-2.git'
                 echo '拉取成功'
             }
         }
         stage('删除旧容器'){
             steps{
             //删除已有deployment和serve
-            bat'''
-                kubectl delete -f Hotel/k8s/hotel-deployment.yaml || true
-                kubectl delete -f Hotel/k8s/hotel-service.yaml || true
-            '''
+            // bat'''
+            //     kubectl delete -f Hotel/k8s/hotel-deployment.yaml || true
+            //     kubectl delete -f Hotel/k8s/hotel-service.yaml || true
+            // '''
             // 查找并停止旧的容器
                 powershell '''
-                $containers = docker ps -q --filter "ancestor=qiuer0121/hotel:latest"
+                $containers = docker ps -q --filter "ancestor=bxr0820/hotel:latest"
                 foreach ($container in $containers) {
                     Write-Output "Stopping container $container"
                     docker stop $container
                 }
 
-                $allContainers = docker ps -a -q --filter "ancestor=qiuer0121/hotel:latest"
+                $allContainers = docker ps -a -q --filter "ancestor=bxr0820/hotel:latest"
                 foreach ($container in $allContainers) {
                     Write-Output "Removing container $container"
                     docker rm $container
                 }
                 '''
-                bat 'docker rmi -f qiuer0121/hotel:latest || true'
+                bat 'docker rmi -f bxr0820/hotel:latest || true'
             }
         }
         stage('构建新容器'){
             steps{
-                bat 'docker build -t qiuer0121/hotel ./hotel'
+                bat 'docker build -t bxr0820/hotel ./hotel'
                 echo '构建成功'
             }
         }
@@ -42,8 +42,8 @@ pipeline {
             steps {
                 script {
                         bat '''
-                        echo 20050121Rabbit| docker login -u qiuer0121 --password-stdin
-                        docker push qiuer0121/hotel:latest
+                        echo buxinran123| docker login -u bxr0820 --password-stdin
+                        docker push bxr0820/hotel:latest
                         '''
                 }
             }

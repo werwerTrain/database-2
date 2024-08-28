@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hotel
-        image: qiuer0121/hotel:latest
+        image: bxr0820/hotel:latest
         env:
           - name: MYSQL_ROOT_PASSWORD
             value: "werwerTrip1234"
