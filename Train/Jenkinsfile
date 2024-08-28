@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('拉取数据库') {
             steps {
-                git branch: 'sxq', url: 'https://github.com/werwerTrain/database-2.git'
+                git branch: 'bxr', url: 'https://github.com/werwerTrain/database-2.git'
                 echo '拉取成功'
             }
         }
