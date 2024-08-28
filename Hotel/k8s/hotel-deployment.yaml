@@ -15,5 +15,10 @@ spec:
       containers:
       - name: hotel
         image: qiuer0121/hotel:latest
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "werwerTrip1234"
+          - name: MYSQL_DATABASE
+            value: "werwerTrip"
         ports:
         - containerPort: 3301

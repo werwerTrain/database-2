@@ -9,5 +9,4 @@ spec:
     - protocol: TCP
       port: 3301
       targetPort: 3301
-      nodePort: 30021
-  type: NodePort
+  type: ClusterIP
