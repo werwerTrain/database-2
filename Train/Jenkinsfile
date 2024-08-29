@@ -10,10 +10,10 @@ pipeline {
         stage('删除旧容器'){
             steps{
             //删除已有deployment和serve
-            // bat'''
-            //     kubectl delete -f Train/k8s/train-deployment.yaml || true
-            //     kubectl delete -f Train/k8s/train-service.yaml || true
-            // '''
+            bat'''
+                kubectl delete -f Train/k8s/train-deployment.yaml || true
+                kubectl delete -f Train/k8s/train-service.yaml || true
+            '''
             // 查找并停止旧的容器
                 powershell '''
                 $containers = docker ps -q --filter "ancestor=bxr0820/train:latest"
