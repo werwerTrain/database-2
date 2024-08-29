@@ -8,5 +8,5 @@ spec:
   ports:
     - protocol: TCP
       port: 3303
-      targetPort: 3303
+      targetPort: 3306
   type: ClusterIP
